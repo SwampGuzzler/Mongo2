@@ -4,7 +4,7 @@ var hikeSchema = new mongoose.Schema({
 	type: String,
 	geometry: {
 		type: String,
-		coordinates: Array
+		coordinates: [Number]
 	},
 	properties: {
 		rating: String,
@@ -19,13 +19,13 @@ var hikeSchema = new mongoose.Schema({
 		elevMax: Number
 	}
 });
-mongoose.model('Hike', hikeSchema);
+mongoose.model('Hike', hikeSchema, 'hikes5');
 mongoose.connect( 'mongodb://localhost/test');
 
 // Replacing Mongo Code w/ this
 //var mongoose = require('mongoose'),
-db = mongoose.createConnection('localhost', 'test');
-db.on('error', console.error.bind(console, 'connection error:'));
+//db = mongoose.createConnection('localhost', 'test');
+//db.on('error', console.error.bind(console, 'connection error:'));
 //var Hike = mongoose.model('Hike', hikeSchema);
 
 /*
