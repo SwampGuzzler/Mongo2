@@ -3,8 +3,9 @@ var mongoose = require('mongoose');
 var hikeSchema = new mongoose.Schema({
 	type: String,
 	geometry: {
-		type: String,
-		coordinates: [Number]
+    type: mongoose.Schema.Types.Mixed,
+		//coordinates: mongoose.Schema.Types.Mixed
+    coordinates: { type: mongoose.Schema.Types.Mixed, index: true}
 	},
 	properties: {
 		rating: String,
@@ -19,8 +20,35 @@ var hikeSchema = new mongoose.Schema({
 		elevMax: Number
 	}
 });
-mongoose.model('Hike', hikeSchema, 'hikes5');
+
+mongoose.set('debug', true);
+mongoose.model('Hike', hikeSchema, 'hikes6');
 mongoose.connect( 'mongodb://localhost/test');
+
+/*
+mongoose.connect( 'mongodb://localhost/test', function (err, db) {
+  if(err) return console.dir(err)
+  //var collection = db.collection('hikes6');
+
+  hikes6.collection.ensureIndex( { geometry : "2dsphere" }, function(err, result) {
+    if(err) return console.dir(err);
+  });
+});*/
+
+
+/*
+Db.connect("mongodb://localhost:27017/geodb", function(err, db) {
+  if(err) return console.dir(err)
+  var collection = db.collection('places');
+
+  collection.ensureIndex({loc: "2d"}, {min: -500, max: 500, w:1}, function(err, result) {
+    if(err) return console.dir(err);
+
+    collection.insert(document, {w:1}, function(err, result) {
+      if(err) return console.dir(err)
+    });
+  });
+}); */
 
 // Replacing Mongo Code w/ this
 //var mongoose = require('mongoose'),

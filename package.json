@@ -8,6 +8,9 @@
     "express": "*",
     "jade": "*",
     "connect": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "chai": "^1.9.1",
+    "mocha": "^1.20.1",
+    "superagent": "^0.18.0"
   }
 }
