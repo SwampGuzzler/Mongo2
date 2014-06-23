@@ -3,5 +3,25 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js')
+    script(src='http://code.jquery.com/jquery-2.1.0.min.js')
+    link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css')
+    script.
+        $(document).ready(function(){
+            var map = L.map('map').setView([47.3, -120], 7);
+            L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+            id: 'examples.map-20v6611k'
+        }).addTo(map);
+        })
   body
     block content
+    #map(style='height: 500px;')
+    p Some hikes I hope to display are:
+    ul
+      for hike in hikes
+        li= hike
+        - var fn = function() { return "android KitKat"}
+        p #{fn()}
+        - var fn2 = function() { return "android KitKat"}
+        p #{fn2()}

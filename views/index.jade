@@ -1,9 +1,13 @@
 extends layout
 
 block content
-  h1= title
+  h2= title
   #content
   p Some hikes I hope to display are:
   ul
     for hike in hikes
       li= hike
+
+  #mapDiv
+
+
