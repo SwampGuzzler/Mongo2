@@ -26,20 +26,23 @@ module.exports = function(grunt) {
       }
     },
     browserify: {
-      standalone: {
-        src: [ '<%= pkg.name %>.js' ],
-        dest: './browser/dist/<%= pkg.name %>.standalone.js',
-        options: {
-          bundleOptions: {
-            standalone: '<%= pkg.name %>'
-          }
-        }
+      all: {
+        src: 'app.js',
+        dest: 'dist/client.js'
       },
+    },
+    uglify: {
+      dist: {
+        files: {
+          'dist/<%= pkg.name %>.js': ['<%= browserify.dest %>']
+        }
+      }
     }
   });
  
   // Load plug-ins
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-browserify');
  
@@ -48,6 +51,6 @@ module.exports = function(grunt) {
     'jshint', 'mochaTest'
   ]);
   grunt.registerTask('build', [
-    'browserify'
+    'browserify', 'uglify'
   ]);
 };
