@@ -21,7 +21,24 @@ html
     ul
       for hike in hikes
         li= hike
-        - var fn = function() { return "android KitKat"}
+        - var fn = function() {return hike.geometry.coordinates}
         p #{fn()}
-        - var fn2 = function() { return "android KitKat"}
-        p #{fn2()}
+        script.
+          $(document).ready(function(){
+              var map2 = L.map('map2').setView([47.3, -120], 7);
+              L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+              attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+              id: 'examples.map-20v6611k'
+          }).addTo(map2);
+          return map2;
+          })
+        script.
+          var display = function(map2) {
+            console.log(map2);
+            map2.setView([20.3, -120], 7);
+          }
+          display(map2);
+
+    #map2(style='height: 300px;')
+    
+    

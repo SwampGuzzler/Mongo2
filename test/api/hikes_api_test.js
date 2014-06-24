@@ -2,7 +2,7 @@ var superagent = require('superagent');
 var chai = require('chai'),
     expect = chai.expect,
     should = chai.should();
-var app = require('../../app.js').app
+var app = require('../../app.js').app;
 
 describe('Express REST API Server', function() {
   var id;
@@ -21,7 +21,7 @@ describe('Express REST API Server', function() {
         id = res.body._id;
 
         done();
-      })
+      });
   });
 
   //testing the GET function of the JSON API
@@ -34,7 +34,7 @@ describe('Express REST API Server', function() {
         expect(res.body.body).to.be.eql('a new note!');
 
         done();
-      })
+      });
   });
 /*
   it('can successfully update a note', function(done) {

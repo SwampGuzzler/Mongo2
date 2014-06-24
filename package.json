@@ -1,16 +1,26 @@
 {
-  "name": "application-name",
+  "name": "app",
   "version": "0.0.1",
   "scripts": {
-    "start": "node app"
+    "start": "node app",
+    "test": "grunt"
   },
   "dependencies": {
     "express": "*",
     "jade": "*",
     "connect": "*",
     "mongoose": "*",
+    "mongo": "*",
     "chai": "^1.9.1",
     "mocha": "^1.20.1",
     "superagent": "^0.18.0"
+  },
+  "devDependencies": {
+    "require": "^0.5.0",
+    "assert": "^1.1.1",
+    "browserify": "^4.1.11",
+    "grunt-browserify": "^2.1.0",
+    "mongoose": "^3.8.12",
+    "mongodb": "^1.4.7"
   }
 }
