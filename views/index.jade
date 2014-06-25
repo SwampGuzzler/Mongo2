@@ -3,11 +3,22 @@ extends layout
 block content
   h2= title
   #content
-  p Some hikes I hope to display are:
+  p Some hikes from INDEX.jade...
   ul
     for hike in hikes
       li= hike
 
+
   #mapDiv
+  script(src='http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js')
+  script(src='http://code.jquery.com/jquery-2.1.0.min.js')
+  link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css')
+  p More content
+
+  .classOne
+  p For real can we render both?
+
+  script(src="map.js")
+
 
 

@@ -17,11 +17,12 @@ html
   body
     block content
     #map(style='height: 500px;')
-    p Some hikes I hope to display are:
-    ul
+    p Some hikes from LAYOUT.jade..
+    ul#books
       for hike in hikes
-        li= hike
+        li#books= hike
         - var fn = function() {return hike.geometry.coordinates}
+        <!-- How can we add the hikes in this list as Leaflet points in the map below, or better yet, the map above??-->
         p #{fn()}
         script.
           $(document).ready(function(){
@@ -30,6 +31,17 @@ html
               attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
               id: 'examples.map-20v6611k'
           }).addTo(map2);
+          var hikeJS = document.getElementById("books").getElementsByTagName("li")[0].innerHTML;
+          console.log(hikeJS);
+          var hikeJS2 = hikeJS.replace(/_/, '');
+          console.log(typeof(hikeJS2));
+          //console.log(hikeJS2);
+          var hikeJS3 = JSON.stringify(hikeJS2);
+          var hikeJS4 = JSON.parse(hikeJS3);
+          //console.dir(hikeJS4);
+          //console.log(hikeJS4.id);
+          var hikeJS5 = new Object(hikeJS4);
+          console.dir(hikeJS5);
           return map2;
           })
         script.
@@ -40,5 +52,8 @@ html
           display(map2);
 
     #map2(style='height: 300px;')
+
+    .classOne
+    p Does this class work?
     
     

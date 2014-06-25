@@ -1,12 +1,8 @@
 var mongoose = require('mongoose');
 var assert = require('assert');
 
-
 //var L = require('http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js');
-
-
-
-exports.mapLogic = function mapLogic(map){
+function mapLogic(map){
 	//var map = L.map('mapDiv').setView([49, -120], 7);
 
     //L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
