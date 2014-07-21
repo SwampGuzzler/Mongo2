@@ -7,7 +7,7 @@ var hikeSchema = new mongoose.Schema({
     coordinates: { type: mongoose.Schema.Types.Mixed, index: true}
 	},
 	properties: {
-		rating: String,
+		rating: [String],
 		length: String,
 		kml: String,
 		features: String,
@@ -23,6 +23,11 @@ var hikeSchema = new mongoose.Schema({
 mongoose.set('debug', true);
 mongoose.model('Hike', hikeSchema, 'hikes6');
 mongoose.connect( 'mongodb://localhost/test');
+/*
+hikeSchema.methods.rateHike = function(userRating) {
+	this.properties.rating.push(userRating);
+} 
+*/
 
 /*
 mongoose.connect( 'mongodb://localhost/test', function (err, db) {
